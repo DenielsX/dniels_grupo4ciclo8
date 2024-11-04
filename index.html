@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNIELS - Zapatillas deportivas y urbanas</title>
+    <style>
+        /* Variables de colores */
+        :root {
+            --primary-color: #004aad;  /* Azul */
+            --secondary-color: #1a1a1a; /* Negro */
+            --accent-color: #ff0000;    /* Rojo */
+            --bg-color: #ffffff;        /* Blanco */
+            --text-color: #333333;      /* Gris oscuro */
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        /* Encabezado */
+        header {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            text-align: center;
+            color: var(--bg-color);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: var(--accent-color);
+        }
+
+        /* Menú de navegación */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            background-color: var(--secondary-color);
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--bg-color);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Estilo de secciones */
+        section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            font-size: 2em;
+        }
+
+        section p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        /* Carrusel */
+        .carousel {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel img {
+            width: 100%;
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        /* Estilo de productos */
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .product {
+            background-color: var(--bg-color);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 220px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .product button {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .product button:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Carrito de compras */
+        #carrito {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* Sección de confirmación de compra */
+        #confirmacion {
+            display: none;
+            text-align: center;
+            padding: 50px;
+            color: var(--secondary-color);
+            background-color: var(--bg-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <h1>DNIELS</h1>
+        <p>Zapatillas deportivas y urbanas - Diseño, tecnología y estilo peruano</p>
+    </header>
+    <img src="logoz.jpg" alt="Zapatilla Roja" style="width: 200px; height: auto;">
+
+    <!-- Menú de navegación -->
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Zapatillas</a></li>
+            <li><a href="#colecciones">Colecciones</a></li>
+            <li><a href="#tecnologia">Tecnología</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Carrito de compras -->
+    <div id="carrito">
+        <span id="cart-count">0</span> artículos
+    </div>
+
+    <!-- Sección de inicio con carrusel -->
+    <section id="inicio">
+        <h2>Bienvenido a DNIELS</h2>
+        <div class="carousel">
+            <img src="nike1.jfif" alt="Zapatilla 1" class="active">
+            <img src="po.jpeg" alt="Zapatilla 2">
+            <img src="WhatsApp Image 2024-10-31 at 12.03.59 PM.jpeg" alt="Zapatilla 3">
+        </div>
+    </section>
+
+    <!-- Sección de productos -->
+    <section id="productos">
+        <h2>Nuestros Productos</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="nike1.jfif" alt="Zapatilla Roja">
+                <h3>Zapatilla Roja</h3>
+                <p>Precio: S/ 150</p>
+                <button onclick="addToCart()">Añadir al Carrito</button>
+            </div>
+            <div class="product">
+                <img src="po.jpeg" alt="Zapatilla Azul">
+                <h3>Zapatilla Azul</h3>
+                <p>Precio: S/ 130</p>
+                <button onclick="addToCart()">Añadir al Carrito</button>
+            </div>
+            <div class="product">
+                <img src="WhatsApp Image 2024-10-31 at 12.03.59 PM.jpeg" alt="Zapatilla Negra">
+                <h3>Zapatilla Negra</h3>
+                <p>Precio: S/ 140</p>
+                <button onclick="addToCart()">Añadir al Carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de confirmación de compra -->
+    <section id="confirmacion">
+        <h2>¡Gracias por tu compra!</h2>
+        <p>Tu pedido ha sido confirmado y está en camino.</p>
+    </section>
+
+    <!-- Sección de tecnología -->
+    <section id="tecnologia">
+        <h2>Tecnología</h2>
+        <p>En DNIELS, usamos los mejores materiales y tecnologías para el máximo rendimiento.</p>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros">
+        <h2>Sobre DNIELS</h2>
+        <p>DNIELS es una empresa peruana dedicada a la fabricación de zapatillas con estilo urbano.</p>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <p>Estamos aquí para ayudarte a encontrar tus próximas zapatillas favoritas.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DNIELS. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Scripts de funcionalidad -->
+    <script>
+        // Carrusel de imágenes
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        setInterval(nextImage, 3000);
+
+        // Función de añadir al carrito
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.getElementById('cart-count').textContent = cartCount;
+            mostrarConfirmacion();
+        }
+
+        // Mostrar confirmación de compra
+        function mostrarConfirmacion() {
+            document.getElementById('confirmacion').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('confirmacion').style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+
